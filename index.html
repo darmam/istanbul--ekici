@@ -1,109 +1,389 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>İstanbul Oto Çekici | 7/24 En Yakın Yol Yardım</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #f5f5f5;
-    }
-    header {
-      background-color: #1c1c1c;
-      padding: 20px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-      color: #ffcc00;
-    }
-    .call-btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #ffcc00;
-      color: #121212;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-    .section {
-      padding: 30px 20px;
-    }
-    .services, .contact {
-      background-color: #1e1e1e;
-      border-radius: 10px;
-      margin: 20px auto;
-      max-width: 800px;
-      padding: 20px;
-    }
-    .services h2, .contact h2 {
-      color: #ffcc00;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #1c1c1c;
-      color: #8c8c8c;
-      font-size: 14px;
-    }
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      background-color: #25d366;
-      color: white;
-      padding: 12px;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 22px;
-      z-index: 100;
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Sercan Kurtarıcı — Oto Çekici & Kurtarıcı</title>
+<meta name="description" content="7/24 oto çekici, yol yardımı ve kurtarma hizmetleri. Hızlı servis, uygun fiyat.">
+<style>
+  :root{
+    --bg:#08121a;
+    --card:#0d2430;
+    --accent:#ff8a00;
+    --muted:#97b7b4;
+    --glass: rgba(255,255,255,0.03);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#07121a 0%, #02121a 100%);color:#e8f6f4;min-height:100vh}
+  .container{max-width:1100px;margin:28px auto;padding:20px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ff6a00);display:flex;align-items:center;justify-content:center;font-weight:800;color:#08121a}
+  h1{margin:0;font-size:1.4rem}
+  nav{display:flex;gap:10px}
+  nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
+  nav a:hover{background:rgba(255,255,255,0.02);color:#fff}
+  .hero{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:18px}
+  .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 6px 30px rgba(0,0,0,0.6);backdrop-filter:blur(4px)}
+  .hero-left h2{margin:0 0 8px 0}
+  .cta{display:flex;gap:10px;margin-top:12px}
+  button{background:var(--accent);border:none;padding:10px 14px;border-radius:10px;color:#041018;font-weight:700;cursor:pointer}
+  .muted{color:var(--muted);font-size:0.95rem}
+  .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
+  .service{padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.02))}
+  form{display:flex;flex-direction:column;gap:10px}
+  input,textarea,select{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+  textarea{min-height:110px;resize:vertical}
+  footer{margin-top:18px;text-align:center;color:var(--muted);font-size:0.9rem}
+  /* small screens */
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr}
+    nav{display:none}
+  }
+  /* honeypot (gizli) */
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  /* modal */
+  .modal-back{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:60}
+  .modal{background:#07121a;padding:18px;border-radius:12px;width:92%;max-width:420px}
+  .danger{color:#ffb4aa}
+  .ok{color:#b7f3d8}
+  .status-badge{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.02);font-weight:600}
+  .small{font-size:0.9rem;color:var(--muted)}
+</style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">OK</div>
+        <div>
+          <h1>Sercan Kurtarıcı</h1>
+          <div class="small">7/24 Oto Çekici • Yol Yardım • Araç Kurtarma</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#iletisim">İletişim</a>
+        <a href="#fiyatlar">Fiyatlar</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;align-items:flex-end">
+        <div class="status-badge" id="securityStatus">Güvenlik: Normal</div>
+        <div class="small">Hızlı servis: <strong>+90 5XX XXX XX XX</strong></div>
+      </div>
+    </header>
 
-<header>
-  <h1>İstanbul Oto Çekici</h1>
-  <a href="tel:05322293161" class="call-btn">Hemen Ara: 0532 229 3161</a>
-</header>
+    <main class="hero" aria-live="polite">
+      <section class="card hero-left" aria-labelledby="heroTitle">
+        <h2 id="heroTitle">En hızlı ve güvenilir oto çekici servisi</h2>
+        <p class="muted">İstanbul ve çevresinde 7/24 yol yardım — kısa sürede hizmet, profesyonel ekip ve uygun fiyat.</p>
 
-<section class="section">
-  <h2>En Yakın Oto Çekici Hizmeti</h2>
-  <p>İstanbul Sultanbeyli bölgesinde 7/24 hızlı ve güvenilir oto kurtarma hizmeti veriyoruz.</p>
-</section>
+        <div class="services" id="hizmetler">
+          <div class="service">
+            <strong>Çekici Hizmeti</strong>
+            <div class="small">Kaza, arıza veya yer değişimi için</div>
+          </div>
+          <div class="service">
+            <strong>Lastik & Yakıt Yardımı</strong>
+            <div class="small">Lastik değişimi veya acil yakıt ikmali</div>
+          </div>
+          <div class="service">
+            <strong>Oto Kurtarma</strong>
+            <div class="small">Araç vinçleme ve kurtarma</div>
+          </div>
+          <div class="service">
+            <strong>Depolama & Transfer</strong>
+            <div class="small">Kurtarılan araçların güvenli transferi</div>
+          </div>
+        </div>
 
-<section class="section services">
-  <h2>Hizmetlerimiz</h2>
-  <ul>
-    <li>7/24 Acil Oto Çekici</li>
-    <li>Yolda Kalan Araçlar İçin Yol Yardımı</li>
-    <li>Kaza Sonrası Kurtarma</li>
-    <li>Araç Taşıma Hizmeti</li>
-  </ul>
-</section>
+        <h3 style="margin-top:14px">Referanslar</h3>
+        <p class="small">Müşterilerimiz bizi hızlı, güvenilir ve profesyonel buluyor. İsterseniz gerçek müşteri yorumları ekleyebilirsiniz.</p>
 
-<section class="section contact">
-  <h2>İletişim</h2>
-  <p><strong>Telefon:</strong> 0532 229 3161</p>
-  <p><strong>WhatsApp:</strong> Aynı numaradan bize ulaşabilirsiniz.</p>
-  <p><strong>Bölgemiz:</strong> İstanbul - Sultanbeyli ve çevresi</p>
-</section>
+        <h3 id="fiyatlar">Tahmini Başlangıç Fiyatları</h3>
+        <ul class="small">
+          <li>Kısa çekme (0-10 km): 650 TL</li>
+          <li>Uzun çekme (10+ km): km başı ek ücret</li>
+          <li>Vinç & Kurtarma: duruma göre fiyatlandırma</li>
+        </ul>
 
-<footer>
-  © 2025 İstanbul Oto Çekici - Tüm Hakları Saklıdır
-</footer>
+      </section>
+
+      <aside class="card" aria-labelledby="contactTitle">
+        <h3 id="contactTitle">Hemen Çağır / Teklif Al</h3>
+
+        <!-- FORM: Basit client-side validation + anti-bot önlemleri -->
+        <!-- ÖNEMLİ: Gerçek alımlarda form verilerini sunucuya POST edip sunucu tarafında da doğrulama yap! -->
+        <form id="contactForm" autocomplete="on" novalidate>
+          <label for="name">İsim</label>
+          <input id="name" name="name" required placeholder="Adınız Soyadınız">
+
+          <label for="phone">Telefon (WhatsApp)</label>
+          <input id="phone" name="phone" inputmode="tel" required placeholder="+90 5XX XXX XX XX">
+
+          <label for="service">Hizmet</label>
+          <select id="service" name="service">
+            <option>Çekici - Kısa Taşıma</option>
+            <option>Çekici - Uzun Taşıma</option>
+            <option>Oto Kurtarma / Vinç</option>
+            <option>Yol Yardım (lastik, yakıt)</option>
+          </select>
+
+          <label for="message">Durum / Konum (kısa)</label>
+          <textarea id="message" name="message" placeholder="Araç konumu, ilçe, kısa açıklama..."></textarea>
+
+          <!-- honeypot: görünmez alan -->
+          <div class="hp" aria-hidden="true">
+            <label for="hp_field">Leave blank</label>
+            <input id="hp_field" name="hp_field" autocomplete="off" tabindex="-1">
+          </div>
+
+          <div style="display:flex;gap:8px;align-items:center">
+            <button type="button" id="sendBtn">Gönder & Çağır</button>
+            <div class="small">veya ara: <strong>+90 5XX XXX XX XX</strong></div>
+          </div>
+
+          <div id="formNote" class="small" style="margin-top:8px"></div>
+        </form>
+
+        <div style="margin-top:12px" class="small">
+          <strong>Adres:</strong> İstanbul içi — 7/24 servis.<br>
+          <strong>Email:</strong> info@sercankurtarici.example
+        </div>
+      </aside>
+    </main>
+
+    <footer id="iletisim" class="card" style="margin-top:18px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="small">İşletme bilgileri, KVKK / gizlilik ve daha fazla içerik buraya gelebilir.</div>
+        <div class="small">© Sercan Kurtarıcı • Tüm hakları saklıdır.</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- challenge modal -->
+  <div class="modal-back" id="modalBack" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div id="modalTitle" style="font-weight:700">Kısa Doğrulama</div>
+      <div id="modalText" class="small" style="margin-top:8px">Lütfen aşağıdaki işlemi yapın.</div>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <input id="challengeInput" placeholder="Cevap">
+        <button id="challengeBtn">Gönder</button>
+      </div>
+      <div id="challengeNote" class="small" style="margin-top:8px"></div>
+    </div>
+  </div>
+
+<script>
+/*
+ Çok katmanlı client-side anti-bot koruması (açıklama):
+ 1) Honeypot: gizli form alanı doldurulursa kesin bot.
+ 2) navigator.webdriver ve headless UA tespiti.
+ 3) Fare / touch hareket sayısı, klavye anomalileri.
+ 4) Rate-limit: localStorage içinde son tıklama zamanları.
+ 5) Basit challenge (math) modalı ile insan doğrulaması.
+ 6) Sunucuya gerçek log/ doğrulama ekleyin (fetch ile POST) — client-side tek başına yeterli değildir.
+*/
+
+(function(){
+  const sendBtn = document.getElementById('sendBtn');
+  const hpField = document.getElementById('hp_field');
+  const form = document.getElementById('contactForm');
+  const formNote = document.getElementById('formNote');
+  const securityStatus = document.getElementById('securityStatus');
+
+  // score mekanizması: yüksek -> daha şüpheli
+  let score = 0;
+  let mouseMoves = 0;
+  let keyCount = 0;
+  let clickTimes = [];
+  const WINDOW_MS = 10000;
+  const MAX_CLICK = 6;
+
+  // headless/webdriver tespiti
+  if (navigator.webdriver) { score += 50; securityStatus.textContent='Güvenlik: Şüpheli (webdriver)'; }
+  const ua = navigator.userAgent || '';
+  if (/HeadlessChrome|PhantomJS|SlimerJS/i.test(ua)) { score += 50; securityStatus.textContent='Güvenlik: Şüpheli (headless)'; }
+
+  // mouse/touch hareketleri
+  window.addEventListener('mousemove', ()=>{ mouseMoves++; if (mouseMoves > 3) score = Math.max(0, score-3); }, {passive:true});
+  window.addEventListener('touchstart', ()=>{ mouseMoves += 2; }, {passive:true});
+
+  // klavye kontrolü
+  window.addEventListener('keydown', ()=>{ keyCount++; if (keyCount > 2) score = Math.max(0, score-1); });
+
+  // load clicks from localStorage
+  function loadClicks(){
+    try{
+      const raw = localStorage.getItem('ok_clicks');
+      if (raw) clickTimes = JSON.parse(raw).filter(t => Date.now()-t < WINDOW_MS);
+    }catch(e){ clickTimes = []; }
+  }
+  function saveClicks(){
+    localStorage.setItem('ok_clicks', JSON.stringify(clickTimes));
+  }
+  loadClicks();
+
+  function addClick(){
+    const now = Date.now();
+    clickTimes = clickTimes.filter(t => now - t < WINDOW_MS);
+    clickTimes.push(now);
+    saveClicks();
+  }
+
+  // honeypot check
+  function honeypotFilled(){
+    const v = hpField.value && hpField.value.trim();
+    if (v) {
+      score += 1000;
+      securityStatus.textContent = 'Güvenlik: Bot (honeypot)';
+      return true;
+    }
+    return false;
+  }
+
+  // basit math challenge
+  let currentAnswer = null;
+  const modalBack = document.getElementById('modalBack');
+  const modalText = document.getElementById('modalText');
+  const challengeInput = document.getElementById('challengeInput');
+  const challengeBtn = document.getElementById('challengeBtn');
+  const challengeNote = document.getElementById('challengeNote');
+
+  function openChallenge(msg){
+    const a = Math.floor(Math.random()*7)+2;
+    const b = Math.floor(Math.random()*7)+1;
+    currentAnswer = a + b;
+    modalText.textContent = msg + " Lütfen " + a + " + " + b + " kaç eder?";
+    challengeInput.value = '';
+    challengeNote.textContent = '';
+    modalBack.style.display = 'flex';
+    modalBack.setAttribute('aria-hidden','false');
+  }
+
+  challengeBtn.addEventListener('click', ()=>{
+    const v = parseInt(challengeInput.value.trim(),10);
+    if (v === currentAnswer){
+      modalBack.style.display = 'none';
+      modalBack.setAttribute('aria-hidden','true');
+      challengeNote.textContent = 'Doğrulama başarılı.';
+      challengeNote.className = 'ok';
+      score = Math.max(0, score - 20);
+      // after success, submit the form programmatically
+      submitForm(true);
+    } else {
+      challengeNote.textContent = 'Yanlış cevap, tekrar deneyin.';
+      challengeNote.className = 'danger';
+      score += 5;
+    }
+  });
+
+  // disable/enable UI helpers
+  function setUIBlocked(sec){
+    sendBtn.disabled = true;
+    securityStatus.textContent = 'Geçici blok: ' + sec + 's';
+    let left = sec;
+    const iv = setInterval(()=>{
+      left--;
+      securityStatus.textContent = 'Geçici blok: ' + left + 's';
+      if (left <= 0){ clearInterval(iv); securityStatus.textContent = 'Güvenlik: Normal'; sendBtn.disabled = false; }
+    },1000);
+  }
+
+  // form validation basics
+  function validateFormData(data){
+    if (!data.name || !data.phone) return false;
+    // basit telefon kontrol (sayı uzunluğu)
+    const digits = (data.phone.match(/\d/g)||[]).length;
+    if (digits < 9) return false;
+    return true;
+  }
+
+  // fake submission (demo). Replace with fetch POST to your server (server side must verify!)
+  function submitForm(fromChallenge=false){
+    // gather data
+    const payload = {
+      name: form.name.value.trim(),
+      phone: form.phone.value.trim(),
+      service: form.service.value,
+      message: form.message.value.trim(),
+      ts: Date.now(),
+      ua: navigator.userAgent
+    };
+
+    if (!validateFormData(payload)){
+      formNote.textContent = 'Lütfen isim ve geçerli telefon giriniz.';
+      return;
+    }
+
+    // honeypot tekrar kontrol
+    if (honeypotFilled()){
+      formNote.textContent = 'Şüpheli etkinlik tespit edildi. İletişim başarısız.';
+      return;
+    }
+
+    // demo: hızlı tıklama algılama
+    loadClicks();
+    if (clickTimes.length >= MAX_CLICK && !fromChallenge){
+      score += 40;
+      setUIBlocked(20);
+      openChallenge('Çok hızlı talep gönderimi tespit edildi.');
+      formNote.textContent = 'Şüpheli davranış tespit edildi. Lütfen doğrulama yapın.';
+      return;
+    }
+
+    // if score high -> challenge
+    if (score >= 30 && !fromChallenge){
+      openChallenge('Davranışınız şüpheli bulundu. Kısa doğrulama gereklidir.');
+      formNote.textContent = 'Doğrulama gerekiyor.';
+      return;
+    }
+
+    // otherwise "send"
+    addClick();
+    formNote.textContent = 'Talebiniz alındı. En kısa sürede sizi arayacağız. (Demo)';
+    form.reset();
+
+    // PRODUCTION: burada fetch ile sunucuya gönder. Sunucuda IP, UA ve honeypot kontrolü yap.
+    /*
+    fetch('/submit-request', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    }).then(r=>r.json()).then(res=>{
+      formNote.textContent = res.ok ? 'Talep başarıyla gönderildi.' : 'Gönderim hatası.';
+    }).catch(e=>{
+      formNote.textContent = 'Sunucu hatası.';
+    });
+    */
+  }
+
+  // main click handler
+  sendBtn.addEventListener('click', ()=>{
+    addClick();
+    // simple heuristics
+    if (honeypotFilled()) {
+      formNote.textContent = 'Şüpheli etkinlik tespit edildi.';
+      return;
+    }
+    if (mouseMoves < 2 && !('ontouchstart' in window)) score += 10;
+    if (!navigator.plugins || navigator.plugins.length === 0) score += 6;
+    if (!navigator.languages || navigator.languages.length === 0) score += 6;
+
+    submitForm(false);
+  });
+
+  // init status
+  if (score > 0) securityStatus.textContent = 'Güvenlik: İnceleniyor';
+})();
+</script>
+
+</body>
+</html>
 
 <!-- WhatsApp Floating Button -->
 <a href="https://wa.me/905322293161" class="whatsapp-btn">💬</a>
 
 </body>
 </html>
+
