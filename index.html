@@ -1,177 +1,226 @@
 <!doctype html>
 <html lang="tr">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Kardeşler Kurtarıcı — Oto Çekici & Kurtarıcı</title>
-<meta name="description" content="7/24 oto çekici, yol yardımı ve kurtarma hizmetleri. Hızlı servis, uygun fiyat.">
-<style>
-  :root{
-    --bg:#08121a;
-    --card:#0d2430;
-    --accent:#ff8a00;
-    --muted:#97b7b4;
-    --glass: rgba(255,255,255,0.03);
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:linear-gradient(180deg,#07121a 0%, #02121a 100%);color:#e8f6f4;min-height:100vh}
-  .container{max-width:1100px;margin:28px auto;padding:20px}
-  header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .brand{display:flex;gap:12px;align-items:center}
-  .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ff6a00);display:flex;align-items:center;justify-content:center;font-weight:800;color:#08121a}
-  h1{margin:0;font-size:1.4rem}
-  nav{display:flex;gap:10px}
-  nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
-  nav a:hover{background:rgba(255,255,255,0.02);color:#fff}
-  .hero{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:18px}
-  .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 6px 30px rgba(0,0,0,0.6);backdrop-filter:blur(4px)}
-  .hero-left h2{margin:0 0 8px 0}
-  .cta{display:flex;gap:10px;margin-top:12px}
-  button{background:var(--accent);border:none;padding:10px 14px;border-radius:10px;color:#041018;font-weight:700;cursor:pointer}
-  .muted{color:var(--muted);font-size:0.95rem}
-  .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
-  .service{padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.02))}
-  form{display:flex;flex-direction:column;gap:10px}
-  input,textarea,select{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-  textarea{min-height:110px;resize:vertical}
-  footer{margin-top:18px;text-align:center;color:var(--muted);font-size:0.9rem}
-  /* small screens */
-  @media(max-width:900px){
-    .hero{grid-template-columns:1fr}
-    nav{display:none}
-  }
-  /* honeypot (gizli) */
-  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-  /* modal */
-  .modal-back{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:60}
-  .modal{background:#07121a;padding:18px;border-radius:12px;width:92%;max-width:420px}
-  .danger{color:#ffb4aa}
-  .ok{color:#b7f3d8}
-  .status-badge{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.02);font-weight:600}
-  .small{font-size:0.9rem;color:var(--muted)}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Güvenilir Çekici – 7/24 Oto Kurtarma ve Yol Yardım</title>
+  <meta name="description" content="Güvenilir Çekici ile 7/24 oto kurtarma, çekici, yol yardımı hizmeti. Hızlı, güvenli ve uzman ekip.">
+
+  <style>
+    :root {
+      --bg: #0a1f2e;
+      --card: #113849;
+      --accent: #ffb400;
+      --text: #e0e7ec;
+      --muted: #a3bac3;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: Arial, sans-serif; line-height: 1.6; }
+    .container { max-width: 1000px; margin: auto; padding: 20px; }
+    header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; }
+    header .logo { font-size: 1.8rem; font-weight: bold; color: var(--accent); }
+    nav a { color: var(--text); margin-left: 15px; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    .hero { margin-top: 40px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 20px; }
+    .hero p { font-size: 1.2rem; margin-bottom: 30px; color: var(--muted); }
+    .hero button { background: var(--accent); color: var(--bg); border: none; padding: 12px 24px; font-size: 1rem; border-radius: 8px; cursor: pointer; }
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 50px; }
+    .service-card { background: var(--card); padding: 20px; border-radius: 10px; }
+    .service-card h3 { margin-bottom: 10px; color: var(--accent); }
+    .service-card p { color: var(--muted); }
+
+    .contact-form { background: var(--card); padding: 20px; border-radius: 10px; margin-top: 50px; }
+    .contact-form label { display: block; margin-top: 10px; color: var(--text); }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #33677a; border-radius: 6px;
+      background: #0f2c3f; color: var(--text);
+    }
+    .contact-form button { margin-top: 15px; background: var(--accent); border: none; padding: 12px; font-size: 1rem; border-radius: 8px; cursor: pointer; }
+
+    footer { text-align: center; margin-top: 60px; color: var(--muted); font-size: 0.9rem; }
+
+    /* Honeypot alanı */
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    /* Modal (doğrulama) */
+    .modal-back { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); align-items: center; justify-content: center; }
+    .modal { background: var(--card); padding: 20px; border-radius: 8px; width: 90%; max-width: 400px; }
+    .modal h2 { color: var(--accent); margin-bottom: 15px; }
+    .modal input { width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #33677a; background: #0f2c3f; color: var(--text); }
+    .modal button { background: var(--accent); border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; }
+
+  </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="brand">
-        <div class="logo">OK</div>
-        <div>
-          <h1>Sercan Kurtarıcı</h1>
-          <div class="small">7/24 Oto Çekici • Yol Yardım • Araç Kurtarma</div>
-        </div>
-      </div>
+      <div class="logo">Güvenilir Çekici</div>
       <nav>
-        <a href="#hizmetler">Hizmetler</a>
-        <a href="#iletisim">İletişim</a>
-        <a href="#fiyatlar">Fiyatlar</a>
+        <a href="#services">Hizmetler</a>
+        <a href="#about">Hakkımızda</a>
+        <a href="#contact">İletişim</a>
       </nav>
-      <div style="display:flex;flex-direction:column;align-items:flex-end">
-        <div class="status-badge" id="securityStatus">Güvenlik: Normal</div>
-        <div class="small">Hızlı servis: <strong>+90 532 229 3161 </strong></div>
-      </div>
     </header>
 
-    <main class="hero" aria-live="polite">
-      <section class="card hero-left" aria-labelledby="heroTitle">
-        <h2 id="heroTitle">En hızlı ve güvenilir oto çekici servisi</h2>
-        <p class="muted">İstanbul ve çevresinde 7/24 yol yardım — kısa sürede hizmet, profesyonel ekip ve uygun fiyat.</p>
+    <section class="hero">
+      <h1>7/24 Oto Çekici & Kurtarıcı Hizmeti</h1>
+      <p>Her zaman yanınızdayız — İstanbul'da ve çevresinde hızlı ve güvenilir oto kurtarma.</p>
+      <button id="callNow">Hemen Çağır</button>
+    </section>
 
-        <div class="services" id="hizmetler">
-          <div class="service">
-            <strong>Çekici Hizmeti</strong>
-            <div class="small">Kaza, arıza veya yer değişimi için</div>
-          </div>
-          <div class="service">
-            <strong>Lastik & Yakıt Yardımı</strong>
-            <div class="small">Lastik değişimi veya acil yakıt ikmali</div>
-          </div>
-          <div class="service">
-            <strong>Oto Kurtarma</strong>
-            <div class="small">Araç vinçleme ve kurtarma</div>
-          </div>
-          <div class="service">
-            <strong>Depolama & Transfer</strong>
-            <div class="small">Kurtarılan araçların güvenli transferi</div>
-          </div>
-        </div>
-
-        <h3 style="margin-top:14px">Referanslar</h3>
-        <p class="small">Müşterilerimiz bizi hızlı, güvenilir ve profesyonel buluyor. İsterseniz gerçek müşteri yorumları ekleyebilirsiniz.</p>
-
-        <h3 id="fiyatlar">Tahmini Başlangıç Fiyatları</h3>
-        <ul class="small">
-          <li>Kısa çekme (0-10 km): 1500 TL</li>
-          <li>Uzun çekme (10+ km): km başı ek ücret</li>
-          <li>Vinç & Kurtarma: duruma göre fiyatlandırma</li>
-        </ul>
-
-      </section>
-
-      <aside class="card" aria-labelledby="contactTitle">
-        <h3 id="contactTitle">Hemen Çağır / Teklif Al</h3>
-
-        <!-- FORM: Basit client-side validation + anti-bot önlemleri -->
-        <!-- ÖNEMLİ: Gerçek alımlarda form verilerini sunucuya POST edip sunucu tarafında da doğrulama yap! -->
-        <form id="contactForm" autocomplete="on" novalidate>
-          <label for="name">İsim</label>
-          <input id="name" name="name" required placeholder="Adınız Soyadınız">
-
-          <label for="phone">Telefon (WhatsApp)</label>
-          <input id="phone" name="phone" inputmode="5322293161" required placeholder="+90 532 229 3161">
-
-          <label for="service">Hizmet</label>
-          <select id="service" name="service">
-            <option>Çekici - Kısa Taşıma</option>
-            <option>Çekici - Uzun Taşıma</option>
-            <option>Oto Kurtarma / Vinç</option>
-            <option>Yol Yardım (lastik, yakıt)</option>
-          </select>
-
-          <label for="message">Durum / Konum (kısa)</label>
-          <textarea id="message" name="message" placeholder="Araç konumu, ilçe, kısa açıklama..."></textarea>
-
-          <!-- honeypot: görünmez alan -->
-          <div class="hp" aria-hidden="true">
-            <label for="hp_field">Leave blank</label>
-            <input id="hp_field" name="hp_field" autocomplete="off" tabindex="-1">
-          </div>
-
-          <div style="display:flex;gap:8px;align-items:center">
-            <button type="button" id="sendBtn">Gönder & Çağır</button>
-            <div class="small">veya ara: <strong>+90 532 229 3161</strong></div>
-          </div>
-
-          <div id="formNote" class="small" style="margin-top:8px"></div>
-        </form>
-
-        <div style="margin-top:12px" class="small">
-          <strong>Adres:</strong> İstanbul içi — 7/24 servis.<br>
-        </div>
-      </aside>
-    </main>
-
-    <footer id="iletisim" class="card" style="margin-top:18px">
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div class="small">İşletme bilgileri, KVKK / gizlilik ve daha fazla içerik buraya gelebilir.</div>
-        <div class="small">© Sercan Kurtarıcı • Tüm hakları saklıdır.</div>
+    <section id="services" class="services">
+      <div class="service-card">
+        <h3>Oto Çekici</h3>
+        <p>Kronik arıza veya kaza sonrası aracınızı güvenle istediğiniz noktaya taşıyoruz.</p>
       </div>
+      <div class="service-card">
+        <h3>Yol Yardım</h3>
+        <p>Lastik değişimi, akü takviyesi, benzin ikmali gibi acil yol yardım hizmetleri.</p>
+      </div>
+      <div class="service-card">
+        <h3>Oto Kurtarma</h3>
+        <p>Vinç ile kurtarma, araç sudan/çamurdan çıkarma ve zorlu durumlara müdahale.</p>
+      </div>
+      <div class="service-card">
+        <h3>Uzun Mesafe Taşıma</h3>
+        <p>Şehir içi veya şehirler arası çekici hizmeti ile güvenli araç taşıma.</p>
+      </div>
+    </section>
+
+    <section id="about" style="margin-top:50px;">
+      <div class="service-card">
+        <h3>Hakkımızda</h3>
+        <p>Güvenilir Çekici, tecrübeli ekip ve modern araç filosuyla 7/24 hizmet veren güvenli oto kurtarıcıdır. Müşteri memnuniyeti ve hızlı müdahale bizim önceliğimizdir.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-form">
+      <h3>İletişim & Talep Formu</h3>
+      <form id="towingForm" novalidate>
+        <label for="name">İsim</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Telefon</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="serviceType">Hizmet Türü</label>
+        <select id="serviceType" name="serviceType">
+          <option>Oto Çekici</option>
+          <option>Yol Yardım</option>
+          <option>Oto Kurtarma</option>
+          <option>Uzun Mesafe Taşıma</option>
+        </select>
+
+        <label for="location">Konum / Açıklama</label>
+        <textarea id="location" name="location" placeholder="Aracınız nerede? Ne oldu?"></textarea>
+
+        <div class="hp" aria-hidden="true">
+          <label for="hp_input">Beni Doldurma</label>
+          <input type="text" id="hp_input" name="hp_input" autocomplete="off" tabindex="-1">
+        </div>
+
+        <button type="button" id="submitBtn">Talep Gönder</button>
+        <div id="formMessage" style="margin-top:10px; color: var(--muted);"></div>
+      </form>
+    </section>
+
+    <footer>
+      &copy; 2025 Güvenilir Çekici. Tüm hakları saklıdır. <br>
+      7/24 Destek: +90 5XX XXX XX XX
     </footer>
   </div>
 
-  <!-- challenge modal -->
-  <div class="modal-back" id="modalBack" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div id="modalTitle" style="font-weight:700">Kısa Doğrulama</div>
-      <div id="modalText" class="small" style="margin-top:8px">Lütfen aşağıdaki işlemi yapın.</div>
-      <div style="margin-top:12px;display:flex;gap:8px">
-        <input id="challengeInput" placeholder="Cevap">
-        <button id="challengeBtn">Gönder</button>
-      </div>
-      <div id="challengeNote" class="small" style="margin-top:8px"></div>
+  <!-- Doğrulama Modal -->
+  <div class="modal-back" id="modalBack">
+    <div class="modal">
+      <h2>Doğrulama</h2>
+      <p id="challengeText">Lütfen aşağıdaki işlemi tamamlayın:</p>
+      <input type="text" id="challengeInput">
+      <button id="challengeBtn">Gönder</button>
+      <div id="challengeResult" style="margin-top:8px; color: var(--text);"></div>
     </div>
   </div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('towingForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const hpInput = document.getElementById('hp_input');
+      const formMessage = document.getElementById('formMessage');
+
+      const modalBack = document.getElementById('modalBack');
+      const challengeText = document.getElementById('challengeText');
+      const challengeInput = document.getElementById('challengeInput');
+      const challengeBtn = document.getElementById('challengeBtn');
+      const challengeResult = document.getElementById('challengeResult');
+
+      let correctAnswer = null;
+
+      function openChallenge(msg) {
+        const a = Math.floor(Math.random()*8) + 1;
+        const b = Math.floor(Math.random()*8) + 1;
+        correctAnswer = a + b;
+        challengeText.textContent = msg + " Lütfen " + a + " + " + b + " kaç eder?";
+        challengeInput.value = '';
+        challengeResult.textContent = '';
+        modalBack.style.display = 'flex';
+      }
+
+      challengeBtn.addEventListener('click', () => {
+        const val = parseInt(challengeInput.value, 10);
+        if (val === correctAnswer) {
+          modalBack.style.display = 'none';
+          formMessage.textContent = "Doğrulama başarılı, talebiniz alındı.";
+          submitForm(true);
+        } else {
+          challengeResult.textContent = "Yanlış cevap, tekrar deneyin.";
+        }
+      });
+
+      function validateForm(data) {
+        if (!data.name || !data.phone) return false;
+        return true;
+      }
+
+      function submitForm(fromChallenge = false) {
+        const data = {
+          name: form.name.value.trim(),
+          phone: form.phone.value.trim(),
+          serviceType: form.serviceType.value,
+          location: form.location.value.trim()
+        };
+
+        // honeypot kontrolü
+        if (hpInput.value.trim() !== "") {
+          formMessage.textContent = "Şüpheli form gönderimi tespit edildi.";
+          return;
+        }
+
+        if (!validateForm(data)) {
+          formMessage.textContent = "Lütfen isim ve telefon giriniz.";
+          return;
+        }
+
+        if (!fromChallenge) {
+          openChallenge("Davranışınız şüpheli bulundu.");
+          return;
+        }
+
+        // Burada gerçek form gönderimini yapabilirsin (fetch ile)
+        // fetch('/api/towing-request', { method: 'POST', body: JSON.stringify(data) })
+        //   .then(...) ...
+
+        formMessage.textContent = "Talebiniz başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz.";
+        form.reset();
+      }
+
+      submitBtn.addEventListener('click', () => {
+        submitForm(false);
+      });
+    })();
+
+
 
 <script>
 /*
@@ -385,5 +434,6 @@
 
 </body>
 </html>
+
 
 
