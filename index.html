@@ -3,6 +3,30 @@
 <head>
     
 <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-NG340RHYJB"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-NG340RHYJB'); </script>
+    <script>
+  gtag('config', 'AW-16454672953/yV56CKzbhcwbELnEmaY9', {
+    'phone_conversion_number': '5322293161'
+  });
+</script>
+<!-- Event snippet for Kişi (1) conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-16454672953/Jso6CK_bhcwbELnEmaY9',
+      'value': 1.0,
+      'currency': 'TRY',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>24/7 Acil Oto Çekici ve Yol Yardım - Hız. Güven. Kalite.</title>
@@ -718,6 +742,7 @@
 
 </body>
 </html>
+
 
 
 
